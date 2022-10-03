@@ -2,10 +2,10 @@ name: emeeting_flutter
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.17.0 <3.0.0'
+environment:
+  sdk: ">=2.17.0 <3.0.0"
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.5
   flutter_svg: 1.0.3
@@ -13,25 +13,27 @@ dependencies:
   font_awesome_flutter: ^9.1.0
   http: ^0.13.5
   intl: 0.17.0
-  flutter: 
+  qr_code_scanner: ^1.0.1
+  slide_to_act: ^2.0.1
+
+  flutter:
     sdk: flutter
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: 2.0.1
-  flutter_test: 
+  flutter_test:
     sdk: flutter
 
-flutter: 
-  assets: 
+flutter:
+  assets:
     - assets/lotties/
     - assets/icons/
     - assets/images/
-  fonts: 
+  fonts:
     - family: Nunito
-      fonts: 
+      fonts:
         - asset: assets/fonts/Nunito-SemiBold.ttf
     - family: Muli
-      fonts: 
+      fonts:
         - asset: assets/fonts/muli/Muli-SemiBold.ttf
   uses-material-design: true
-

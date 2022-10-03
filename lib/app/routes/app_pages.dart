@@ -10,8 +10,12 @@ import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/meetdetail/bindings/meetdetail_binding.dart';
+import '../modules/meetdetail/views/meetdetail_view.dart';
 import '../modules/salary/bindings/salary_binding.dart';
 import '../modules/salary/views/salary_view.dart';
+import '../modules/scanner/bindings/scanner_binding.dart';
+import '../modules/scanner/views/scanner_view.dart';
 import '../modules/schedule/bindings/schedule_binding.dart';
 import '../modules/schedule/views/schedule_view.dart';
 
@@ -57,6 +61,16 @@ class AppPages {
       name: _Paths.AUTH,
       page: () => AuthView(),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.SCANNER,
+      page: () => ScannerView(),
+      binding: ScannerBinding(),
+    ),
+    GetPage(
+      name: _Paths.MEETDETAIL,
+      page: () => MeetdetailView(),
+      binding: MeetdetailBinding(),
     ),
   ];
 }

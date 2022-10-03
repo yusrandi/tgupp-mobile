@@ -2,6 +2,7 @@ import 'package:emeeting_flutter/app/modules/attendance/views/attendance_view.da
 import 'package:emeeting_flutter/app/modules/history/views/history_view.dart';
 import 'package:emeeting_flutter/app/modules/home/views/home_view.dart';
 import 'package:emeeting_flutter/app/modules/salary/views/salary_view.dart';
+import 'package:emeeting_flutter/app/modules/scanner/views/scanner_view.dart';
 import 'package:emeeting_flutter/app/modules/schedule/views/schedule_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,19 +24,20 @@ class BaseView extends GetView<BaseController> {
       backgroundColor: CoreColor.greyColor2,
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             width: size.width,
             height: size.height,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Obx(() => c.count.value == 1
-                ? ScheduleView()
-                : c.count.value == 2
-                    ? HistoryView()
-                    : c.count.value == 3
-                        ? AttendanceView()
-                        : c.count.value == 4
-                            ? SalaryView()
-                            : HomeView()),
+            child: Obx(() => c.count.value == 0
+                ? ScannerView()
+                : c.count.value == 1
+                    ? ScheduleView()
+                    : c.count.value == 2
+                        ? HistoryView()
+                        : c.count.value == 3
+                            ? AttendanceView()
+                            : c.count.value == 4
+                                ? SalaryView()
+                                : HomeView()),
           ),
           Align(
             alignment: Alignment.bottomCenter,

@@ -3,9 +3,9 @@ class Api {
   static Api instance = Api();
   //* Base API URL
 
-  static const domain = "http://192.168.8.136/emeeting-api/public";
+  // static const domain = "http://192.168.8.136/emeeting-api/public";
 
-  // static const domain = "https://ecobrickapp.com";
+  static const domain = "https://tgupp.my.id";
 
   static const baseURL = "$domain/api";
   static const imageURL = "$domain/storage/photos/";
@@ -13,4 +13,6 @@ class Api {
   String scheduleUrl = "$baseURL/schedule";
   String historyUrl = "$baseURL/history";
   String attendanceUrl = "$baseURL/attendance";
+  String meetUrl = "$baseURL/meet";
+  String loginUrl = "$baseURL/login";
 }

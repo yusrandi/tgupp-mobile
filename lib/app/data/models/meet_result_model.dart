@@ -12,8 +12,8 @@ class MeetResultModel {
   String? result;
   String? leader;
   String? notulen;
-  int? userId;
-  int? meetId;
+  String? userId;
+  String? meetId;
 
   factory MeetResultModel.fromJson(Map<String, dynamic> json) =>
       MeetResultModel(

@@ -17,51 +17,54 @@ class HistoryView extends GetView<HistoryController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 50),
-          Row(
-            children: [
-              Image.asset(CoreImages.logoSulselImages, height: 50),
-              const SizedBox(width: 16),
-              Text(
-                'Histories Meeting',
-                style: CoreStyles.uTitle,
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          FutureBuilder<List<MeetModel>>(
-            future: historyController.fetchListMeet(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              List<MeetModel> data = snapshot.data!;
-
-              return Container(
-                child: MediaQuery.removePadding(
-                  context: context,
-                  removeTop: true,
-                  child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      primary: false,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: data.length,
-                      itemBuilder: (context, index) {
-                        MeetModel model = data[index];
-                        return itemList(size, model);
-                      }),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 50),
+            Row(
+              children: [
+                Image.asset(CoreImages.logoSulselImages, height: 50),
+                const SizedBox(width: 16),
+                Text(
+                  'Histories Meeting',
+                  style: CoreStyles.uTitle,
                 ),
-              );
-            },
-          ),
-          const SizedBox(height: 50),
-        ],
+              ],
+            ),
+            const SizedBox(height: 16),
+            FutureBuilder<List<MeetModel>>(
+              future: historyController.fetchListMeet(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                List<MeetModel> data = snapshot.data!;
+
+                return Container(
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        primary: false,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: data.length,
+                        itemBuilder: (context, index) {
+                          MeetModel model = data[index];
+                          return itemList(size, model);
+                        }),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 50),
+          ],
+        ),
       ),
     );
   }

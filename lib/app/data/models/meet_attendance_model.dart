@@ -7,8 +7,8 @@ class MeetAttendanceModel {
   int? id;
   String? time;
   String? status;
-  int? userId;
-  int? meetId;
+  String? userId;
+  String? meetId;
   MeetModel? meet;
 
   factory MeetAttendanceModel.fromJson(Map<String, dynamic> json) =>

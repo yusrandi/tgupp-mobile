@@ -27,7 +27,7 @@ class MeetModel {
   String? begin;
   String? end;
   String? place;
-  int? status;
+  String? status;
   String? salary;
   List<MeetResultModel>? meetResults = [];
   List<MeetAttendanceModel>? meetAttendances = [];

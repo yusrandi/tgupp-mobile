@@ -44,4 +44,18 @@ class MeetService extends GetConnect {
       return data.map((e) => MeetAttendanceModel.fromJson(e)).toList();
     }
   }
+
+  Future<MeetModel> getMeet(String barcode) async {
+    final response =
+        await http.get(Uri.parse('${Api.instance.meetUrl}/$barcode'));
+
+    var data = json.decode(response.body);
+    if (data['responsecode'] == '1') {
+      MeetModel model = MeetModel.fromJson(json.decode(response.body)['data']);
+
+      return model;
+    } else {
+      return MeetModel();
+    }
+  }
 }
