@@ -129,7 +129,7 @@ class SalaryView extends GetView<SalaryController> {
                                           color: Colors.red,
                                           borderRadius:
                                               BorderRadius.circular(16)),
-                                      child: Text(model.meet!.salary!,
+                                      child: Text(model.user!.title!.salary!,
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 18,

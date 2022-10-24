@@ -13,12 +13,6 @@ class SalaryController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-
-    List<MeetAttendanceModel> list = await fetchListMeetAttendance();
-    list.forEach((element) {
-      var salarySplit = element.meet!.salary!.replaceAll('Rp', '');
-      total.value += int.parse(salarySplit.replaceAll('.', ''));
-    });
   }
 
   @override
@@ -33,7 +27,20 @@ class SalaryController extends GetxController {
 
   void increment() => count.value++;
   Future<List<MeetAttendanceModel>> fetchListMeetAttendance() async {
-    return await MeetService()
+    total.value = 0;
+
+    List<MeetAttendanceModel> list = await MeetService()
         .getAttendances(_authenticationManager.getToken().toString());
+
+    countSalary(list);
+    return list;
+  }
+
+  void countSalary(List<MeetAttendanceModel> list) {
+    list.forEach((element) {
+      var salarySplit = element.user!.title!.salary!.replaceAll('Rp', '');
+      print(salarySplit);
+      total.value += int.parse(salarySplit.replaceAll('.', ''));
+    });
   }
 }

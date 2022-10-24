@@ -5,7 +5,7 @@ import '../services/local_notification_services.dart';
 
 class NotificationHelper {
   static const TAG = "NotificationHelper";
-  static void init(BuildContext context) {
+  static void init() {
     // opened app from terminated state
     FirebaseMessaging.instance.getInitialMessage();
 
@@ -18,6 +18,8 @@ class NotificationHelper {
     // foreground work
 
     FirebaseMessaging.onMessage.listen((message) {
+      print("foreGroundHandler");
+
       print("$TAG : Message Title ${message.notification!.title}");
       print("$TAG : Message Body ${message.notification!.body}");
 

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 
 import '../../../configs/api.dart';
@@ -17,10 +18,15 @@ class AuthController extends GetxController {
   late final AuthenticationManager _authManager =
       Get.put(AuthenticationManager());
 
+  String token = "token";
+
   final count = 0.obs;
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+
+    token = await getMessagingToken();
+    print(token);
   }
 
   @override
@@ -35,11 +41,43 @@ class AuthController extends GetxController {
 
   void increment() => count.value++;
 
+  Future<String> getMessagingToken() async {
+    String token = "";
+
+    await FirebaseMessaging.instance
+        .requestPermission()
+        .timeout(Duration(seconds: 5))
+        .then((value) {
+      print(
+          'SignForm.getMessagingToken() requestPermission result is ${value.authorizationStatus}');
+    }).catchError((e) {
+      print(
+          'SignForm.getMessagingToken() requestPermission error: ${e.toString()}');
+
+      Get.snackbar(CoreStrings.appName, "Terjadi kesalahan perijinan",
+          backgroundColor: CoreColor.whiteSoft,
+          duration: const Duration(seconds: 2));
+    });
+
+    await FirebaseMessaging.instance.getToken().then((value) {
+      print(' SignForm.getMessagingToken() token is $value');
+      token = value!;
+    }).catchError((e) {
+      print('SignForm.getMessagingToken() getToken error: $e');
+      Get.snackbar(CoreStrings.appName, "Terjadi Kesalahan Generate Token",
+          backgroundColor: CoreColor.whiteSoft,
+          duration: const Duration(seconds: 2));
+    });
+
+    return token;
+  }
+
   Future<String> loginUser(String email, String password) async {
     status.value = Status.running;
     var _response = await http.post(Uri.parse(Api().loginUrl), body: {
       "email": email,
       "password": password,
+      "token": token,
     });
 
     status.value = Status.none;

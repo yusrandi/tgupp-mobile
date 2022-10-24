@@ -12,6 +12,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/meetdetail/bindings/meetdetail_binding.dart';
 import '../modules/meetdetail/views/meetdetail_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/salary/bindings/salary_binding.dart';
 import '../modules/salary/views/salary_view.dart';
 import '../modules/scanner/bindings/scanner_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.MEETDETAIL,
       page: () => MeetdetailView(),
       binding: MeetdetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

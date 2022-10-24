@@ -39,7 +39,7 @@ class MeetModel {
         begin: json["begin"],
         end: json["end"],
         place: json["place"],
-        status: json["status"],
+        status: json["status"].toString(),
         salary: json["salary"],
         meetResults: json["meet_results"] != null
             ? List<MeetResultModel>.from(

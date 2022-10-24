@@ -1,51 +1,57 @@
 {
   "project_info": {
-    "project_number": "883195808997",
-    "firebase_url": "https://automatic-chicken-feed-a7e2f-default-rtdb.firebaseio.com",
-    "project_id": "automatic-chicken-feed-a7e2f",
-    "storage_bucket": "automatic-chicken-feed-a7e2f.appspot.com"
+    "project_number": "397492701622",
+    "project_id": "coba-218009",
+    "storage_bucket": "coba-218009.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:883195808997:android:a25aee480c537587cd980c",
+        "mobilesdk_app_id": "1:397492701622:android:dc4b6cce165408c83bd917",
         "android_client_info": {
-          "package_name": "com.example.automatic_feed"
+          "package_name": "com.use.emeeting_flutter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "883195808997-i1pi3nmeilrgr1q3mv1gtfsjgkd9je6r.apps.googleusercontent.com",
+          "client_id": "397492701622-36b60v6ojua379lrlu8atjrppar6lkk6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.automatic_feed",
-            "certificate_hash": "c1a25fc2d87dbb22fff05cd09014cab9ba031295"
-          }
-        },
-        {
-          "client_id": "883195808997-sj2469pik7rob13alk5gejf598nvk7id.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.automatic_feed",
+            "package_name": "com.use.emeeting_flutter",
             "certificate_hash": "a8e1b00a8387ee1d5d510072a5bb3c9eb658433e"
           }
         },
         {
-          "client_id": "883195808997-ovam4gkcv9603jj8hcqom8a2tc559p7h.apps.googleusercontent.com",
+          "client_id": "397492701622-mn5siv0a5prcgj22jbpjdpuoldlj94qh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.use.emeeting_flutter",
+            "certificate_hash": "65203371336e0d98847dc3dd981dea3791bf4894"
+          }
+        },
+        {
+          "client_id": "397492701622-0bt3eqg8d8rr86gf7nhkn2a10vllb814.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBmmy42alJRu0Zi6J0O09L_GafSdJLLmKU"
+          "current_key": "AIzaSyD4JMPEFWo6c5NvNwgjIabTAF_1b3KlMFA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "883195808997-ovam4gkcv9603jj8hcqom8a2tc559p7h.apps.googleusercontent.com",
+              "client_id": "397492701622-0bt3eqg8d8rr86gf7nhkn2a10vllb814.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "397492701622-f13r48554ckttgkllse0ugfu3bvf7g10.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.use.mbcMobile"
+              }
             }
           ]
         }

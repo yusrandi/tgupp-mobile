@@ -6,11 +6,12 @@ import 'package:http/http.dart' as http;
 import '../../configs/api.dart';
 
 class AttendanceService extends GetConnect {
-  Future<String> store(String userId, String meetId) async {
+  Future<String> store(String userId, String meetId, String location) async {
     final response =
         await http.post(Uri.parse(Api.instance.attendanceUrl), body: {
       "user_id": userId,
       "meet_id": meetId,
+      "location": location,
     });
 
     var data = json.decode(response.body);

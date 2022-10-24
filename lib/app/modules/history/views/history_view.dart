@@ -1,3 +1,4 @@
+import 'package:emeeting_flutter/app/data/models/meet_result_model.dart';
 import 'package:emeeting_flutter/app/modules/schedule/views/schedule_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -56,7 +57,44 @@ class HistoryView extends GetView<HistoryController> {
                         itemCount: data.length,
                         itemBuilder: (context, index) {
                           MeetModel model = data[index];
-                          return itemList(size, model);
+                          MeetResultModel meetResultModel =
+                              model.meetResults![0];
+                          return Card(
+                              child: ExpansionTile(
+                            childrenPadding: EdgeInsets.all(16),
+                            title: itemList(size, model),
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 100,
+                                      child: const Text("Pimpinan Rapat ")),
+                                  Text(": ${meetResultModel.leader!}"),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 100,
+                                      child: const Text("Notulen Rapat ")),
+                                  Text(": ${meetResultModel.notulen!}"),
+                                ],
+                              ),
+                              Divider(),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 100,
+                                      child: const Text("Hasil Rapat ")),
+                                  Expanded(
+                                      child:
+                                          Text(": ${meetResultModel.result!}")),
+                                ],
+                              ),
+                            ],
+                          ));
                         }),
                   ),
                 );
@@ -71,68 +109,42 @@ class HistoryView extends GetView<HistoryController> {
 
   Container itemList(Size size, MeetModel model) {
     return Container(
-      width: size.width,
-      child: Row(
+      padding: EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            children: [
-              Container(
-                padding: EdgeInsets.all(5),
-                child: Icon(FontAwesomeIcons.circle, color: Colors.green),
-              ),
-              Container(
-                width: 3,
-                height: 150,
-                color: Colors.grey,
-              ),
-            ],
-          ),
-          Expanded(
-              child: Container(
-            height: 170,
+          Text(model.name!,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+          SizedBox(height: 16),
+          Text('${model.begin} - ${model.end}',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold)),
+          Text('Tempat ${model.place}',
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold)),
+          Text('Peserta Hadir ${model.meetAttendances!.length} Orang',
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold)),
+          Container(
+            margin: EdgeInsets.only(top: 8),
+            padding: EdgeInsets.symmetric(horizontal: 26, vertical: 8),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16), color: Colors.white),
-            margin: EdgeInsets.only(left: 5),
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(model.name!,
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: 16),
-                Text('${model.begin} - ${model.end}',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                Text('Tempat ${model.place}',
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold)),
-                Text('Peserta Hadir ${model.meetAttendances!.length} Orang',
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold)),
-                Container(
-                  margin: EdgeInsets.only(top: 8),
-                  padding: EdgeInsets.symmetric(horizontal: 26, vertical: 8),
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(16)),
-                  child: Text('anda hadir',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold)),
-                ),
-              ],
-            ),
-          )),
+                color: Colors.green, borderRadius: BorderRadius.circular(16)),
+            child: Text('anda hadir',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold)),
+          ),
         ],
       ),
     );

@@ -21,8 +21,8 @@ class MeetResultModel {
         result: json["result"],
         leader: json["leader"],
         notulen: json["notulen"],
-        userId: json["user_id"],
-        meetId: json["meet_id"],
+        userId: json["user_id"].toString(),
+        meetId: json["meet_id"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

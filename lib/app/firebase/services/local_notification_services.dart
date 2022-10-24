@@ -46,7 +46,7 @@ class LocalNotificationServices {
         );
   }
 
-  static void initialize(BuildContext context) {
+  static void initialize() {
     final InitializationSettings initializationSettings =
         InitializationSettings(
       android: AndroidInitializationSettings("@mipmap/ic_launcher"),
@@ -64,7 +64,7 @@ class LocalNotificationServices {
     try {
       final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
       final NotificationDetails notificationDetails = NotificationDetails(
-          android: AndroidNotificationDetails("mbc", "mbc chanel",
+          android: AndroidNotificationDetails("tgupp", "tgupp chanel",
               priority: Priority.high, importance: Importance.high));
 
       await _localNotificationsPlugin.show(id, msg.notification!.title,

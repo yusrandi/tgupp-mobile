@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/schedule_controller.dart';
 
 class ScheduleView extends GetView<ScheduleController> {
@@ -27,7 +28,10 @@ class ScheduleView extends GetView<ScheduleController> {
             const SizedBox(height: 50),
             Row(
               children: [
-                Image.asset(CoreImages.logoSulselImages, height: 50),
+                GestureDetector(
+                    onTap: () => Get.toNamed(Routes.PROFILE),
+                    child:
+                        Image.asset(CoreImages.logoSulselImages, height: 50)),
                 const SizedBox(width: 16),
                 Text(
                   'Schedule Meeting',
@@ -82,14 +86,14 @@ class ScheduleView extends GetView<ScheduleController> {
               ),
               Container(
                 width: 3,
-                height: 150,
+                height: 120,
                 color: Colors.grey,
               ),
             ],
           ),
           Expanded(
               child: Container(
-            height: 170,
+            height: 150,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16), color: Colors.white),
             margin: EdgeInsets.only(left: 5),
